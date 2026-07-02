@@ -1,0 +1,73 @@
+title: Home
+path: home
+icon: mdi:home
+
+type: custom:layout-card
+layout_type: custom:grid-layout
+
+layout:
+  grid-template-columns: repeat(12, 1fr)
+  grid-template-rows: auto
+  grid-gap: 20px
+  margin: 24px
+
+cards:
+
+  - type: custom:mod-card
+    view_layout:
+      grid-column: 1 / 13
+    card_mod:
+      style: |
+        ha-card{
+          background:none;
+          box-shadow:none;
+          border:none;
+        }
+    card: !include ../cards/header.yaml
+
+  - type: custom:button-card
+    template: kiimu_room
+    entity: light.salon_salon_2
+    name: Salón
+    icon: mdi:sofa
+    view_layout:
+      grid-column: span 3
+
+  - type: custom:button-card
+    template: kiimu_room
+    entity: light.estudio_estudio_2
+    name: Estudio
+    icon: mdi:desk
+    view_layout:
+      grid-column: span 3
+
+  - type: custom:button-card
+    template: kiimu_room
+    entity: light.dormitorio_principal_hab_2
+    name: Dormitorio
+    icon: mdi:bed-king
+    view_layout:
+      grid-column: span 3
+
+  - type: custom:button-card
+    template: kiimu_room
+    entity: light.entrada_entrada_3
+    name: Entrada
+    icon: mdi:door
+    view_layout:
+      grid-column: span 3
+
+  - type: weather-forecast
+    entity: weather.forecast_casa
+    show_forecast: true
+    view_layout:
+      grid-column: span 6
+
+  - type: custom:mini-media-player
+    entity: media_player.spotify
+    name: Música
+    artwork: cover
+    hide:
+      power: true
+    view_layout:
+      grid-column: span 6

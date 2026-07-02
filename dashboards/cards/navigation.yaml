@@ -1,0 +1,77 @@
+type: horizontal-stack
+
+cards:
+
+  - type: custom:button-card
+    icon: mdi:home-variant
+    name: Inicio
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/home
+    styles:
+      card:
+        - border-radius: 999px
+        - height: 58px
+        - background: rgba(23,23,23,0.72)
+        - border: 1px solid rgba(255,255,255,0.08)
+      icon:
+        - color: var(--primary-text-color)
+      name:
+        - color: var(--primary-text-color)
+        - font-size: 13px
+
+  - type: custom:button-card
+    icon: mdi:sofa
+    name: Salón
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/salon
+    styles:
+      card:
+        - border-radius: 999px
+        - height: 58px
+        - background: rgba(23,23,23,0.72)
+        - border: 1px solid rgba(255,255,255,0.08)
+      icon:
+        - color: var(--primary-text-color)
+      name:
+        - color: var(--primary-text-color)
+
+  - type: custom:button-card
+    icon: mdi:desk
+    name: Estudio
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/estudio
+    styles:
+      card:
+        - border-radius: 999px
+        - height: 58px
+        - background: rgba(23,23,23,0.72)
+        - border: 1px solid rgba(255,255,255,0.08)
+
+  - type: custom:button-card
+    icon: mdi:television-play
+    name: Media
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/multimedia
+    styles:
+      card:
+        - border-radius: 999px
+        - height: 58px
+        - background: rgba(23,23,23,0.72)
+        - border: 1px solid rgba(255,255,255,0.08)
+
+  - type: custom:button-card
+    icon: mdi:cog
+    name: Ajustes
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace/ajustes
+    styles:
+      card:
+        - border-radius: 999px
+        - height: 58px
+        - background: rgba(23,23,23,0.72)
+        - border: 1px solid rgba(255,255,255,0.08)

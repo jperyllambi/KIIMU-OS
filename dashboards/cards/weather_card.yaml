@@ -1,0 +1,52 @@
+type: vertical-stack
+
+cards:
+
+  - type: custom:mushroom-template-card
+    primary: >
+      {{ state_attr('weather.forecast_casa','temperature') | round(0) }} °C
+    secondary: >
+      {{ states('weather.forecast_casa') | capitalize }}
+    icon: >
+      {% set w = states('weather.forecast_casa') %}
+      {% if w == 'sunny' %}
+        mdi:weather-sunny
+      {% elif w == 'rainy' %}
+        mdi:weather-rainy
+      {% elif w == 'cloudy' %}
+        mdi:weather-cloudy
+      {% else %}
+        mdi:weather-partly-cloudy
+      {% endif %}
+    icon_color: amber
+    layout: vertical
+    fill_container: true
+
+  - type: glance
+    columns: 3
+    show_name: true
+    show_icon: true
+    show_state: true
+    entities:
+      - entity: weather.forecast_casa
+        name: Humedad
+        attribute: humidity
+        icon: mdi:water-percent
+      - entity: weather.forecast_casa
+        name: Viento
+        attribute: wind_speed
+        icon: mdi:weather-windy
+      - entity: weather.forecast_casa
+        name: UV
+        attribute: uv_index
+        icon: mdi:white-balance-sunny
+
+card_mod:
+  style: |
+    ha-card {
+      border-radius: 30px;
+      padding: 16px;
+      background: rgba(23,23,23,0.72);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+    }

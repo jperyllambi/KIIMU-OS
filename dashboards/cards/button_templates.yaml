@@ -1,0 +1,102 @@
+
+button_card_templates:
+
+  kiimu_room_v2:
+    show_icon: true
+    show_name: true
+    show_label: true
+    show_state: false
+
+    aspect_ratio: 1/1
+
+    variables:
+      temperature: ""
+      lights: 0
+
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: "[[[ return entity.attributes.friendly_name ]]]"
+
+    styles:
+
+      card:
+        - border-radius: 30px
+        - padding: 24px
+        - background: |
+            [[[ return entity.state == "on"
+              ? "linear-gradient(135deg,#3B82F6,#2563eb)"
+              : "rgba(23,23,23,.72)";
+            ]]]
+        - border: 1px solid rgba(255,255,255,.08)
+        - transition: all .25s ease
+        - overflow: hidden
+
+      grid:
+        - grid-template-areas: '"i badge" "n n" "l l"'
+        - grid-template-columns: 1fr auto
+        - grid-template-rows: auto auto auto
+
+      icon:
+        - width: 48px
+        - color: |
+            [[[ return entity.state=="on" ? "white":"#A1A1AA"; ]]]
+
+      name:
+        - font-size: 22px
+        - font-weight: 700
+        - color: white
+        - align-self: end
+
+      label:
+        - color: rgba(255,255,255,.75)
+        - font-size: 14px
+
+      custom_fields:
+
+        badge:
+          - justify-self: end
+
+    label: |
+      [[[
+        return variables.lights + " luces";
+      ]]]
+
+    custom_fields:
+
+      badge: |
+        [[[
+          return `<div style="
+            background:rgba(255,255,255,.12);
+            padding:6px 12px;
+            border-radius:999px;
+            color:white;
+            font-size:12px;">
+            ${entity.state=="on"?"ON":"OFF"}
+          </div>`;
+        ]]]
+
+  kiimu_stat:
+
+    show_name: true
+    show_state: true
+    show_icon: true
+
+    styles:
+
+      card:
+        - border-radius: 24px
+        - padding: 18px
+        - background: rgba(23,23,23,.72)
+
+      icon:
+        - color: var(--kiimu-primary)
+
+      name:
+        - font-size: 15px
+
+      state:
+        - font-size: 24px
+        - font-weight: bold

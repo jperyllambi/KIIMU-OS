@@ -1,0 +1,71 @@
+type: custom:layout-card
+layout_type: custom:flex-layout
+
+layout:
+  flex-wrap: wrap
+  gap: 12px
+
+cards:
+
+  - type: custom:mushroom-template-card
+    primary: >
+      {{ state_attr('weather.forecast_casa', 'temperature') | round(0) }}°
+    secondary: >
+      {{ states('weather.forecast_casa') | capitalize }}
+    icon: >
+      {% set weather = states('weather.forecast_casa') %}
+      {% if weather == 'sunny' %}
+        mdi:weather-sunny
+      {% elif weather == 'cloudy' %}
+        mdi:weather-cloudy
+      {% elif weather == 'rainy' %}
+        mdi:weather-rainy
+      {% elif weather == 'partlycloudy' %}
+        mdi:weather-partly-cloudy
+      {% else %}
+        mdi:weather-partly-cloudy
+      {% endif %}
+    icon_color: amber
+    layout: horizontal
+    fill_container: false
+
+  - type: custom:mushroom-template-card
+    primary: >
+      {{ states.light | selectattr('state','eq','on') | list | count }}
+    secondary: Luces
+    icon: mdi:lightbulb-group
+    icon_color: yellow
+    layout: horizontal
+    fill_container: false
+
+  - type: custom:mushroom-template-card
+    primary: Casa
+    secondary: >
+      {% set lights = states.light | selectattr('state','eq','on') | list | count %}
+      {% if lights == 0 %}
+        Todo apagado
+      {% else %}
+        {{ lights }} encendidas
+      {% endif %}
+    icon: mdi:home
+    icon_color: blue
+    layout: horizontal
+    fill_container: false
+
+  - type: custom:mushroom-template-card
+    primary: >
+      {{ now().strftime('%H:%M') }}
+    secondary: >
+      {{ now().strftime('%d %b') }}
+    icon: mdi:clock-outline
+    icon_color: green
+    layout: horizontal
+    fill_container: false
+
+  - type: custom:mushroom-template-card
+    primary: Home Assistant
+    secondary: Online
+    icon: mdi:home-assistant
+    icon_color: cyan
+    layout: horizontal
+    fill_container: false

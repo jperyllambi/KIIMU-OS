@@ -1,0 +1,10 @@
+title: KIIMU OS
+views:
+  - !include views/home.yaml
+  - !include views/salon.yaml
+  - !include views/estudio.yaml
+  - !include views/dormitorio.yaml
+  - !include views/cocina.yaml
+  - !include views/entrada.yaml
+  - !include views/multimedia.yaml
+  - !include views/sistema.yaml
